@@ -1,0 +1,43 @@
+@startuml
+
+package "Model" {
+    class Pedido
+    class Contrato
+    class Veiculo
+    class Usuario
+    class DadosPessoais
+    class Empregador
+}
+
+package "View" {
+    class InterfaceUsuario
+}
+
+package "Controller" {
+    class GerenciadorPedidos
+    class GerenciadorContratos
+    class GerenciadorVeiculos
+    class Autenticacao
+}
+
+package "Repository" {
+    class RepositorioPedidos
+    class RepositorioContratos
+    class RepositorioVeiculos
+    class RepositorioUsuarios
+}
+
+InterfaceUsuario ..> GerenciadorPedidos : usa
+InterfaceUsuario ..> GerenciadorContratos : usa
+InterfaceUsuario ..> GerenciadorVeiculos : usa
+InterfaceUsuario ..> Autenticacao : usa
+
+GerenciadorPedidos ..> RepositorioPedidos : persiste
+GerenciadorContratos ..> RepositorioContratos : persiste
+GerenciadorVeiculos ..> RepositorioVeiculos : persiste
+Autenticacao ..> RepositorioUsuarios : persiste
+
+RepositorioUsuarios ..> DadosPessoais : persiste
+DadosPessoais ..> Empregador : contém
+
+@enduml

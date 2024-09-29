@@ -1,0 +1,37 @@
+@startuml
+top to bottom direction
+
+actor Contratante
+actor Agente
+actor Usuário
+actor "Usuário Registrado"
+
+(Registrar Usuário) 
+(Realizar Login)
+
+(Registrar Pedido de Aluguel)
+(Modificar Pedido de Aluguel)
+(Consultar Pedido de Aluguel)
+(Cancelar Pedido de Aluguel)
+(Executar Contrato de Aluguel)
+(Avaliar Pedido de Aluguel)
+(Registrar Automóvel)
+(Associar Contrato de Crédito)
+
+Usuário --> (Registrar Usuário)
+Usuário --> (Realizar Login)
+
+Contratante --> (Registrar Pedido de Aluguel)
+Contratante --> (Consultar Pedido de Aluguel)
+Contratante --> (Cancelar Pedido de Aluguel)
+
+Agente --> (Avaliar Pedido de Aluguel)
+Agente --> (Registrar Automóvel)
+Agente --> (Associar Contrato de Crédito)
+
+"Usuário Registrado" --> (Executar Contrato de Aluguel)
+"Usuário Registrado" --> (Modificar Pedido de Aluguel)
+
+(Executar Contrato de Aluguel) <-- (Avaliar Pedido de Aluguel): <<include>>
+(Executar Contrato de Aluguel) <-- (Registrar Automóvel): <<include>>
+@enduml
